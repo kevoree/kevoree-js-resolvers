@@ -28,6 +28,7 @@
     "exec-npm-install": "^1.0.0",
     "kevoree-commons": "^2.1.0",
     "kevoree-library": "^5.0.4",
+    "mkdirp": "^0.5.1",
     "npm-vers": "^0.1.0",
     "rimraf": "^2.4.2"
   },
