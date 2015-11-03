@@ -16,9 +16,13 @@ describe('NPMResolver', function () {
         var du = factory.createDeployUnit();
         du.name = 'kevoree-node-javascript';
         du.version = 'latest';
-        resolver.resolve(du, function (err) {
-            done(err);
-            // todo improve that and check that it actually installed the latest (snapshot included)
+        resolver.resolve(du, function (err, JavascriptNode) {
+            if (err) {
+                done(err);
+            } else {
+                var node = new JavascriptNode();
+                done();
+            }
         });
     });
 

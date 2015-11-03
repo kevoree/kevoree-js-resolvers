@@ -1,6 +1,6 @@
 {
   "name": "kevoree-resolvers",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Standard Kevoree Javascript resolvers",
   "main": "./kevoree-resolvers.js",
   "scripts": {
@@ -29,9 +29,7 @@
     "kevoree-commons": "^2.1.0",
     "kevoree-library": "^5.0.4",
     "latest-version": "^2.0.0",
-    "mkdirp": "^0.5.1",
-    "npm-vers": "^0.1.0",
-    "rimraf": "^2.4.2"
+    "mkdirp": "^0.5.1"
   },
   "maintainers": [
     {
@@ -39,5 +37,8 @@
       "email": "max.tricoire@gmail.com"
     }
   ],
-  "readme": "README.md"
+  "readme": "README.md",
+  "devDependencies": {
+    "rimraf": "^2.4.3"
+  }
 }
