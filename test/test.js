@@ -11,6 +11,8 @@ describe('NPMResolver', function () {
 
     var modulesPath = path.resolve(process.cwd(), '.deployUnits');
     var resolver = new NPMResolver(modulesPath);
+    // do not polute my shell please :)
+    resolver.log.info = resolver.log.debug = resolver.log.warn = resolver.log.error = function () { /* noop */ };
 
     it('should install kevoree-node-javascript:latest', function (done) {
         var du = factory.createDeployUnit();
@@ -30,9 +32,13 @@ describe('NPMResolver', function () {
         var du = factory.createDeployUnit();
         du.name = 'kevoree-node-javascript';
         du.version = '5.2.0';
-        resolver.resolve(du, function (err) {
-            done(err);
-            // todo improve that and check that it actually installed the latest release (snapshot excluded)
+        resolver.resolve(du, function (err, JavascriptNode) {
+          if (err) {
+              done(err);
+          } else {
+              var node = new JavascriptNode();
+              done();
+          }
         });
     });
 
@@ -40,30 +46,39 @@ describe('NPMResolver', function () {
         var du = factory.createDeployUnit();
         du.name = 'kevoree-node-javascript';
         du.version = '^4';
-        resolver.resolve(du, function (err) {
-            done(err);
-            // todo improve that and check that it actually installed the latest release (snapshot excluded)
+        resolver.resolve(du, function (err, JavascriptNode) {
+          if (err) {
+              done(err);
+          } else {
+              var node = new JavascriptNode();
+              done();
+          }
         });
     });
 
-    it('should uninstall kevoree-node-javascript:^4', function (done) {
+    it('should fail to install something-that-does-not-exist:yolo', function (done) {
         var du = factory.createDeployUnit();
-        du.name = 'kevoree-node-javascript';
-        du.version = '^4';
-        resolver.uninstall(du, function (err) {
+        du.name = 'something-that-does-not-exist';
+        du.version = 'yolo';
+        resolver.resolve(du, function (err, Clazz) {
             if (err) {
-                done(err);
+                done();
             } else {
-                fs.exists(path.resolve(modulesPath, 'node_modules', du.name), function (exists) {
-                    assert.strictEqual(exists, false, 'kevoree-node-javascript:^4 deployUnit should be deleted');
-                    done();
-                });
+                done(new Error('Should fail!'));
             }
         });
     });
 
-    after(function (done) {
-        // clean
-        rimraf(modulesPath, done);
+    it('should fail to install kevoree-node-javascript:145215.1.2 (unknown version)', function (done) {
+        var du = factory.createDeployUnit();
+        du.name = 'kevoree-node-javascript';
+        du.version = '145215.1.2';
+        resolver.resolve(du, function (err, Clazz) {
+            if (err) {
+                done();
+            } else {
+                done(new Error('Should fail!'));
+            }
+        });
     });
 });
