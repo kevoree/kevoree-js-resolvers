@@ -1,9 +1,11 @@
+'use strict';
+
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var rimraf = require('rimraf');
 var NPMResolver = require('../lib/NPMResolver');
-var kevoree = require('kevoree-library').org.kevoree;
+var kevoree = require('kevoree-library');
 var factory = new kevoree.factory.DefaultKevoreeFactory();
 
 describe('NPMResolver', function () {
@@ -16,11 +18,10 @@ describe('NPMResolver', function () {
         var du = factory.createDeployUnit();
         du.name = 'kevoree-node-javascript';
         du.version = 'latest';
-        resolver.resolve(du, function (err, JavascriptNode) {
+        resolver.resolve(du, function (err) {
             if (err) {
                 done(err);
             } else {
-                var node = new JavascriptNode();
                 done();
             }
         });
