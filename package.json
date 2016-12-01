@@ -1,6 +1,6 @@
 {
   "name": "kevoree-resolvers",
-  "version": "4.0.0-beta.4",
+  "version": "4.0.0",
   "description": "Standard Kevoree Javascript resolvers",
   "main": "./kevoree-resolvers.js",
   "scripts": {
@@ -26,15 +26,15 @@
   "homepage": "https://github.com/kevoree/kevoree-js-resolvers",
   "dependencies": {
     "exec-npm": "^2.0.0",
-    "kevoree-commons": "next",
+    "kevoree-commons": "^3.0.0",
     "mkdirp": "^0.5.1",
     "npm-package-arg": "^4.2.0",
     "pkg-hash": "^2.2.0",
     "q": "^1.4.1"
   },
   "devDependencies": {
-    "kevoree-library": "^5.0.9",
-    "mocha": "^2.5.3",
+    "kevoree-library": "^5.0.10",
+    "mocha": "^3.2.0",
     "rimraf": "^2.4.3"
   },
   "maintainers": [
