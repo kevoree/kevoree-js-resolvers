@@ -1,6 +1,6 @@
 {
   "name": "kevoree-resolvers",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "Standard Kevoree Javascript resolvers",
   "main": "./kevoree-resolvers.js",
   "scripts": {
@@ -36,19 +36,9 @@
     "mocha": "^3.2.0",
     "rimraf": "^2.4.3"
   },
-  "maintainers": [
-    {
-      "name": "leiko",
-      "email": "max.tricoire@gmail.com"
-    }
-  ],
-  "readme": "README.md",
-  "eslintConfig": {
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "eslint:recommended"
-    ]
-  }
+  "maintainers": [{
+    "name": "leiko",
+    "email": "max.tricoire@gmail.com"
+  }],
+  "readme": "README.md"
 }
